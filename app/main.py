@@ -3,6 +3,7 @@ import logging
 from functools import lru_cache
 
 import uvicorn
+from dotenv import load_dotenv
 from fastapi import Depends, FastAPI
 
 from app import config
@@ -11,6 +12,7 @@ from app.business_calculation import predict_housing_value_and_cache, create_pre
 from app.housing import Housing
 
 app = FastAPI()
+load_dotenv()
 logger = logging.getLogger(__name__)
 
 
@@ -48,7 +50,3 @@ def predict_house_price(housing: Housing, settings: config.Settings = Depends(ge
     housing.predicted_value = predicted_value
     housing.timestamp = time_stamp
     return housing
-
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
