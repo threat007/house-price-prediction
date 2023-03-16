@@ -1,6 +1,5 @@
 import csv
 import logging
-import os
 from functools import lru_cache
 
 import uvicorn

@@ -4,8 +4,8 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.business_calculation import create_predicted_data_file
-from app.main import app as main_app, get_settings, create_file
 from app.config import Settings
+from app.main import app as main_app, get_settings
 
 client = TestClient(main_app)
 
